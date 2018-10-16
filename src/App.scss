@@ -1,0 +1,17 @@
+.pad-board {
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10em;
+  height: 10em;
+  border: 1px solid red;
+  flex-wrap: wrap;
+}
+
+.pad {
+  height: 10em;
+  width: 10em;
+  border: 1px solid black;
+  margin: 1em;
+}
