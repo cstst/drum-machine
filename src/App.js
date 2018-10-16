@@ -1,23 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
-import PadBoard from './components/PadBoard';
-import bankOne from './bankOne';
-class App extends Component {
-  state = {
-    curKey: null
-  }
-  componentDidMount() {
-    document.addEventListener('keydown', e => {
-      this.setState({ curKey: e.keyCode })
-    });
-  }
-  render() {
-    return (
-      <div className="App">
-        <PadBoard keyPressed={this.state.curKey} sounds={bankOne} />
-      </div>
-    );
-  }
-}
+import DrumMachine from './components/DrumMachine';
+import { Provider } from 'react-redux';
+import store from './store';
 
-export default App;
+export default () => (
+  <Provider store={store}>
+    <DrumMachine />
+  </Provider>
+);
+

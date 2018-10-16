@@ -1,21 +1,29 @@
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { padPress } from '../actions';
 
-export default class DrumPad extends Component {
+class DrumPad extends Component {
   constructor(props) {
     super(props)
     this.audio = React.createRef();
   }
 
-  componentDidUpdate() {
-    const { keyCode, keyPressed } = this.props;
-    if (keyCode === keyPressed) {
-      this.handleClick();
-    }
+  componentWillMount() {
+    document.addEventListener('keydown', e => {
+      const { keyCode, padPress } = this.props,
+            pressedKey = e.keyCode;
+      if (keyCode === pressedKey) {
+        padPress(pressedKey);
+        this.handleClick();
+      }
+    })
   }
 
   handleClick = () => {
-    const sound = this.audio.current;
+    const { keyCode, padPress } = this.props,
+          sound = this.audio.current;
+    padPress(keyCode);
     if (sound.paused) {
       sound.play();
     } else{
@@ -32,6 +40,8 @@ export default class DrumPad extends Component {
         onClick={this.handleClick}
       >
         <audio 
+          id={name}
+          className="clip"
           ref={this.audio}
           src={src}
         />
@@ -41,3 +51,5 @@ export default class DrumPad extends Component {
   }
 }
 
+
+export default connect(null, { padPress })(DrumPad)

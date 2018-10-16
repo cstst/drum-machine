@@ -1,12 +1,18 @@
-.pad-board {
+#drum-machine {
+  border: 1px solid red;
+  width: 70%;
+  display: flex;
+}
+
+#pad-board {
   font-size: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 10em;
   height: 10em;
-  border: 1px solid red;
   flex-wrap: wrap;
+  border: 1px solid blue;
 }
 
 .drum-pad {
