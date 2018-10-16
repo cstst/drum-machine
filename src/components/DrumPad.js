@@ -24,10 +24,11 @@ export default class DrumPad extends Component {
   }
 
   render() {
-    const { src, name } = this.props;
+    const { src, name, id } = this.props;
     return (
       <button 
-        className="pad"
+        className="drum-pad"
+        id={id}
         onClick={this.handleClick}
       >
         <audio 

@@ -7,10 +7,12 @@ export default props => {
     return (
       <DrumPad 
         key={i} 
-        name={name} 
+        id={name}
+        name={String.fromCharCode(keyCode)} 
         src={src} 
         keyCode={keyCode} 
-        keyPressed={props.keyPressed} />
+        keyPressed={props.keyPressed} 
+      />
     )
   });
   return (
